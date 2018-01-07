@@ -1,2 +1,2 @@
-# inpres-web-app
-Web app for INPRES
+# INPRES Web App
+Web app para los sismos detectados por el INPRES
