@@ -4,57 +4,51 @@
   <title>INPRES Sismos</title>
   <meta name="description" content="Información sobre los últimos sismos ocurridos detectados por el INPRES">
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+  
   <!-- Tags para compatibilidad y responsividad -->
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <!-- Hojas de estilo -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">INPRES Sismos</a>
-            <ul class="right hide-on-med-and-down">
-              <li><i class="material-icons">live_help</i></li>
-            </ul>
-          </div>
-        </nav>
-      </div>  
-
-      <div class="row">
-
-        <!-- Columna lado izquierdo -->
-          <div class="col s3">
-            
-            <div class="row"> 
-              <i class="material-icons prefix">search</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Buscar Sismos</label>
-            </div>  
-
-            <ul class="collection">
-                  <li class="collection-item avatar">
-                    <p class="circle" style="text-align: center"> 4,2 </p>
-                    <span class="title"> 21/02/2017 - 21:43hs</span>
-                    <p>Calingasta, San Juan, Argentina.</p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">check_circle</i></a>
-                  </li>
-            </ul>
-          </div>
-        
-          <!-- Columna lado derecho -->
-          <div class="col s9">
-             <!-- Mapa de Google Maps -->
-             <div id="map"></div>
-          </div>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#!" class="brand-logo">INPRES Sismos</a>
+        <ul class="right hide-on-med-and-down">
+          <li><i class="material-icons">live_help</i></li>
+        </ul>
       </div>
-
+    </nav>
+  </div>
+  
+  <!-- <ul class="collection">
+    <li class="collection-item avatar">
+      <p class="circle" style="text-align: center"> 4,2 </p>
+      <span class="title"> 21/02/2017 - 21:43hs</span>
+      <p>Calingasta, San Juan, Argentina.</p>
+      <a href="#!" class="secondary-content"><i class="material-icons">check_circle</i></a>
+    </li>
+  </ul> -->
+  
+  <ul id="slide-out" class="side-nav fixed">
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+  
+  <main>
+    <div id="map"></div>
+  </main>
+  
   <!-- Todo el contenido debe ir antes de las siguientes referencias a scripts -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

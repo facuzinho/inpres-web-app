@@ -5,4 +5,6 @@ const map = new google.maps.Map(document.getElementById("map"), {
   zoom: 8
 });
 
+$(".button-collapse").sideNav();
+
 console.log(map.center);
