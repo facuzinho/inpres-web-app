@@ -16,6 +16,7 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+  
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
@@ -27,29 +28,19 @@
       </div>
     </nav>
   </div>
+
   
-  <!-- <ul class="collection">
-    <li class="collection-item avatar">
-      <p class="circle" style="text-align: center"> 4,2 </p>
-      <span class="title"> 21/02/2017 - 21:43hs</span>
-      <p>Calingasta, San Juan, Argentina.</p>
-      <a href="#!" class="secondary-content"><i class="material-icons">check_circle</i></a>
-    </li>
-  </ul> -->
-  
-  <ul id="slide-out" class="side-nav fixed">
-    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+
+  <ul id="lista-sismos" class="side-nav fixed collection">    
   </ul>
+
   
   <main>
     <div id="map"></div>
   </main>
   
   <!-- Todo el contenido debe ir antes de las siguientes referencias a scripts -->
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl0n5yub3QoqCqMYn5TFbthwf9Gu4YjUU"></script>
