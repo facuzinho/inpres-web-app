@@ -54,3 +54,7 @@ header, main, footer {
     margin-left: 30px;
     width: 80%;
 } 
+
+.sismos-list-item {
+  cursor: pointer
+}
