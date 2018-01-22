@@ -6,6 +6,7 @@ html, body {
 
 #map {
   height: 90%;
+  margin-left: 6px;
 }
 
 header, main, footer {
@@ -19,7 +20,7 @@ header, main, footer {
 }
 
 .side-nav {
-  margin-top: 65px;
+  margin-top: 64px;
   width: 30%;
   height: 90%;
   
@@ -28,7 +29,7 @@ header, main, footer {
 .collection-item.avatar:hover { background-color : gainsboro }
 
 .circle{
-  background-color: brown;
+  background-color: rgb(156, 239, 245);
 }
 
 .circle .magnitud {
@@ -48,3 +49,8 @@ header, main, footer {
 .right.hide-on-med-and-down{
   margin-right: 15px;
 }
+
+.input-field{
+    margin-left: 30px;
+    width: 80%;
+} 
