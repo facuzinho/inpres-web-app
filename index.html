@@ -35,6 +35,14 @@
           <input id="last_name" type="text" class="validate">
           <label for="last_name">Filtrar</label>
       </li>
+
+        <li v-for="sismo in listaSismos" v-on:click="marcarEnMapa(sismo.latitud, sismo.longitud)" class="collection-item avatar sismos-list-item"> 
+          <p class="circle"><strong class="magnitud">{{ sismo.magnitud }}</strong> </p>
+          <span class="title"> {{ sismo.fecha }} - {{ sismo.hora }} hs</span> 
+          <p>{{ sismo.lugar }}</p>
+        </li>
+     
+
   </ul>
   
   <main>
@@ -46,6 +54,8 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl0n5yub3QoqCqMYn5TFbthwf9Gu4YjUU"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>
