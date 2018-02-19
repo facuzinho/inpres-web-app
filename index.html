@@ -16,18 +16,39 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>ACERCA DE</h4>
+        <p>INPRES Sismos aplication Web</p>
+        <pre>Desarrollado por:
+          -Francisco Hanna.
+          -Facundo Villard</pre>
+        <small>Nota: Los desarrolladores no poseen ninguna relación con el Instituto Nacional de Prevencion Sísmica.
+               Los datos mostrados en la aplicación son extraídos de información disponible de manera pública en www.inpres.gov.ar
+        </small>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+      </div>
+  </div>
+
   
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-        <a href="#!" class="brand-logo">INPRES Sismos</a>
+        <a href="index.html" class="brand-logo">INPRES Sismos</a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="info.html"><i class="material-icons">live_help</i></a></li>
+          <li><a class="modal-trigger" href="#modal1"><i class="material-icons">live_help</i></a></li>
         </ul>
       </div>
     </nav>
   </div>
+
+ 
+
 
   <ul id="lista-sismos" class="side-nav fixed collection">
       <li class="input-field">
@@ -36,7 +57,7 @@
           <label for="last_name">Filtrar</label>
       </li>
 
-        <li v-for="sismo in listaSismos" v-on:click="marcarEnMapa(sismo.latitud, sismo.longitud)" class="collection-item avatar sismos-list-item"> 
+        <li v-for="sismo in listaSismos" v-on:click="marcarEnMapa(sismo.latitud, sismo.longitud, sismo.lugar, sismo.fecha, sismo.hora, sismo.profundidad, sismo.magnitud)" class="collection-item avatar sismos-list-item"> 
           <p class="circle"><strong class="magnitud">{{ sismo.magnitud }}</strong> </p>
           <span class="title"> {{ sismo.fecha }} - {{ sismo.hora }} hs</span> 
           <p>{{ sismo.lugar }}</p>

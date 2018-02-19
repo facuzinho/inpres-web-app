@@ -1,4 +1,8 @@
 $(".button-collapse").sideNav();
+$(document).ready(function(){
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
+});
 
 const map = new google.maps.Map(document.getElementById("map"), {
   center: { lat: -34.397, lng: 150.644 },
@@ -28,22 +32,7 @@ Sismos.on('value', function(snapshot) {
   
 });
 
-/**
- * Dibujar lista HTML de sismos en base de datos
- */
-
- 
-function dibujarListaSismos() {
-  for (let i = 0; i < sismos.length; i++) {
-    let sismo = sismos[i].val();
-    let cadena ='<li id=' + sismo.timestamp + ' class="collection-item avatar sismos-list-item"> ' + 
-                  '<p class="circle">' + '<strong class="magnitud">' +  sismo.magnitud + '</strong> </p>' +
-                  '<span class="title">' + sismo.fecha + ' - ' + sismo.hora + 'hs</span>' + 
-                  '<p>' + sismo.lugar + '</p> '+ 
-                '</li>'
-    $('#lista-sismos').append(cadena);
-  }
-}
+var marker = null;
 
 var lista_sismos = new Vue({
   el: '#lista-sismos',
@@ -52,25 +41,32 @@ var lista_sismos = new Vue({
   },
 
   methods: { 
-    marcarEnMapa: function(latitud, longitud) {
+    marcarEnMapa: function(latitud, longitud, lugar, fecha, hora, profundidad, magnitud) {
+      
+      if (marker != null) {
+        marker.setMap(null);
+      }
+
+      let contentString = '<div> <p style="font-weight: bold;">' + lugar + '</p> ' + 
+                               '<p>Fecha: '+ fecha +'</p>' +
+                               '<p>Hora: ' + hora + '</p>' +
+                               '<p>Profundidad: ' + profundidad + ' km</p>' +
+                               '<p>Magnitud: ' + magnitud + '</p>' +
+                          '</div>'
+
+      let infowindow = new google.maps.InfoWindow({content: contentString})
       let latLong = new google.maps.LatLng(latitud, longitud)
-      let marker = new google.maps.Marker({
+      
+      marker = new google.maps.Marker({
         animation: google.maps.Animation.DROP,
         position: latLong,
         map: map
       })
+      infowindow.open(map, marker)
       map.setCenter(latLong)
 
     }
   }
 });
 
-/**
 
-var google_maps = new Vue({
-  el: '#lista-sismos',
-  
-  }
-})
-
- */
