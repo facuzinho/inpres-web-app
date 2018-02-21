@@ -1,8 +1,8 @@
 $(".button-collapse").sideNav();
 $(document).ready(function(){
-  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
 });
+
 
 const map = new google.maps.Map(document.getElementById("map"), {
   center: { lat: -34.397, lng: 150.644 },
@@ -20,7 +20,7 @@ var database = firebase.database();
 
 /**
  * Listener para cambios en base de datos
- */
+ **/
 
 var Sismos = firebase.database().ref('Sismos').orderByKey();
 Sismos.on('value', function(snapshot) {
@@ -29,6 +29,16 @@ Sismos.on('value', function(snapshot) {
     // console.log(childSnapshot.val().timestamp)
     sismos.unshift(childSnapshot.val())
   });
+  
+  //Routeo de URL's para un sismo especifico
+  let ruta = window.location.hash;
+
+  for (i = 0; i < sismos.length; i++) { 
+    if (ruta.slice(2) == sismos[i].timestamp) {
+      lista_sismos.marcarEnMapa(sismos[i].latitud, sismos[i].longitud, sismos[i].lugar, sismos[i].fecha, sismos[i].hora, sismos[i].profundidad,sismos[i].magnitud);
+      break;
+    }
+  }
   
 });
 
@@ -68,5 +78,7 @@ var lista_sismos = new Vue({
     }
   }
 });
+
+
 
 

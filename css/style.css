@@ -4,6 +4,13 @@ html, body {
   padding: 0;
 }
 
+.side-nav li>a {
+  font-weight: unset;
+  height: unset;
+  line-height: unset;
+  padding: unset;
+}
+
 #map {
   height: 90%;
   margin-left: 6px;

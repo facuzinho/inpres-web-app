@@ -15,8 +15,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
 
+<body>
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
       <div class="modal-content">
@@ -26,19 +26,19 @@
           -Francisco Hanna.
           -Facundo Villard</pre>
         <small>Nota: Los desarrolladores no poseen ninguna relación con el Instituto Nacional de Prevencion Sísmica.
-               Los datos mostrados en la aplicación son extraídos de información disponible de manera pública en www.inpres.gov.ar
+               Los datos mostrados en la aplicación son extraídos de información disponible de manera pública en <a href="www.inpres.gov.ar">www.inpres.gov.ar</a>
         </small>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
       </div>
   </div>
 
-  
+  <!-- Estructura de barra de navegacion -->
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         <a href="index.html" class="brand-logo">INPRES Sismos</a>
         <ul class="right hide-on-med-and-down">
           <li><a class="modal-trigger" href="#modal1"><i class="material-icons">live_help</i></a></li>
@@ -47,23 +47,23 @@
     </nav>
   </div>
 
- 
-
-
   <ul id="lista-sismos" class="side-nav fixed collection">
+      <!--Caja de texto para filtrar -->
       <li class="input-field">
           <i class="material-icons prefix">search</i>
           <input id="last_name" type="text" class="validate">
           <label for="last_name">Filtrar</label>
       </li>
 
-        <li v-for="sismo in listaSismos" v-on:click="marcarEnMapa(sismo.latitud, sismo.longitud, sismo.lugar, sismo.fecha, sismo.hora, sismo.profundidad, sismo.magnitud)" class="collection-item avatar sismos-list-item"> 
+      <!--Estructura de lista de sismos -->
+      <li v-for="sismo in listaSismos" v-on:click="marcarEnMapa(sismo.latitud, sismo.longitud, sismo.lugar, sismo.fecha, sismo.hora, sismo.profundidad, sismo.magnitud)" class="collection-item avatar sismos-list-item">
+        <a v-bind:href="'#/'+ sismo.timestamp">
           <p class="circle"><strong class="magnitud">{{ sismo.magnitud }}</strong> </p>
           <span class="title"> {{ sismo.fecha }} - {{ sismo.hora }} hs</span> 
           <p>{{ sismo.lugar }}</p>
-        </li>
-     
-
+        </a>
+      </li>
+      
   </ul>
   
   <main>
@@ -80,3 +80,5 @@
 </body>
 
 </html>
+
+</router-link>
