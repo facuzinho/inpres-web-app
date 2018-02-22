@@ -11,28 +11,33 @@ html, body {
   padding: unset;
 }
 
-.side-nav li>a:hover{background-color: gainsboro}
-
-#map {
-  height: 90%;
-  margin-left: 6px;
+.side-nav li>a:hover{
+  background-color: gainsboro
 }
 
-header, main, footer {
-  padding-left: 390px;
+#map {
+  height: 100%;
+  margin-top: -64px
 }
 
 @media only screen and (max-width : 992px) {
   header, main, footer {
     padding-left: 0;
   }
+
+  .side-nav.fixed {
+    top: 0px
+  }
 }
 
+
 .side-nav {
-  margin-top: 64px;
-  width: 30%;
-  height: 90%;
-  
+  position: absolute;
+  top: 64px;
+  bottom: 0px;
+  width: auto;
+  padding: 0px;
+  height: auto;
 }
 
 .collection-item.avatar:hover { background-color : gainsboro }
@@ -46,10 +51,6 @@ header, main, footer {
   position: absolute;
   top: 10px;
   left: 10px;  
-}
-
-.nav-wrapper{
-  background-color: darkblue; 
 }
 
 .brand-logo{
@@ -67,4 +68,8 @@ header, main, footer {
 
 .sismos-list-item {
   cursor: pointer
+}
+
+#sidenav-overlay {
+  z-index: 2;
 }
