@@ -4,12 +4,12 @@
   <title>INPRES Sismos</title>
   <meta name="description" content="Información sobre los últimos sismos ocurridos detectados por el INPRES">
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  
+
   <!-- Tags para compatibilidad y responsividad -->
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Hojas de estilo -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
@@ -19,57 +19,57 @@
 <body>
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4>ACERCA DE</h4>
-        <p>INPRES Sismos aplication Web</p>
-        <pre>Desarrollado por:
+    <div class="modal-content">
+      <h4>ACERCA DE</h4>
+      <p>INPRES Sismos aplication Web</p>
+      <pre>Desarrollado por:
           -Francisco Hanna.
           -Facundo Villard</pre>
-        <small>Nota: Los desarrolladores no poseen ninguna relación con el Instituto Nacional de Prevencion Sísmica.
-               Los datos mostrados en la aplicación son extraídos de información disponible de manera pública en <a href="www.inpres.gov.ar">www.inpres.gov.ar</a>
-        </small>
-      </div>
-      <div class="modal-footer">
-        <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-      </div>
+      <small>Nota: Los desarrolladores no poseen ninguna relación con el Instituto Nacional de Prevencion Sísmica. Los datos mostrados
+        en la aplicación son extraídos de información disponible de manera pública en
+        <a href="www.inpres.gov.ar">www.inpres.gov.ar</a>
+      </small>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
   </div>
 
   <!-- Estructura de barra de navegacion -->
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a data-activates="slide-out" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
         <a href="index.html" class="brand-logo">INPRES Sismos</a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="modal-trigger" href="#modal1">Acerca de...</a></li>
+          <li>
+            <a class="modal-trigger" href="#modal1">Acerca de...</a>
+          </li>
         </ul>
       </div>
     </nav>
   </div>
 
   <ul id="lista-sismos" class="side-nav fixed collection">
-      <!--Caja de texto para filtrar -->
-      <li class="input-field">
-          <i class="material-icons prefix">search</i>
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Filtrar</label>
-      </li>
-
-      <!--Estructura de lista de sismos -->
-      <li v-for="sismo in listaSismos" v-on:click="marcarEnMapa(sismo.latitud, sismo.longitud, sismo.lugar, sismo.fecha, sismo.hora, sismo.profundidad, sismo.magnitud)" class="collection-item avatar sismos-list-item">
-        <a v-bind:href="'#/'+ sismo.timestamp">
-          <p class="circle"><strong class="magnitud">{{ sismo.magnitud }}</strong> </p>
-          <span class="title"> {{ sismo.fecha }} - {{ sismo.hora }} hs</span> 
-          <p>{{ sismo.lugar }}</p>
-        </a>
-      </li>
-      
+    <!--Estructura de lista de sismos -->
+    <li v-for="sismo in listaSismos" v-on:click="marcarEnMapa(sismo.latitud, sismo.longitud, sismo.lugar, sismo.fecha, sismo.hora, sismo.profundidad, sismo.magnitud)"
+      class="collection-item avatar sismos-list-item">
+      <a v-bind:href="'#/'+ sismo.timestamp">
+        <p class="circle">
+          <strong class="magnitud">{{ sismo.magnitud }}</strong>
+        </p>
+        <span class="title"> {{ sismo.fecha }} - {{ sismo.hora }} hs</span>
+        <p>{{ sismo.lugar }}</p>
+      </a>
+    </li>
   </ul>
-  
+
   <main>
     <div id="map"></div>
   </main>
-  
+
   <!-- Todo el contenido debe ir antes de las siguientes referencias a scripts -->
   <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
