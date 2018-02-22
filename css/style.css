@@ -11,6 +11,8 @@ html, body {
   padding: unset;
 }
 
+.side-nav li>a:hover{background-color: gainsboro}
+
 #map {
   height: 90%;
   margin-left: 6px;
