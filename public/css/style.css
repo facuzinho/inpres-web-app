@@ -89,3 +89,7 @@ li.loading > .spinner {
 [v-cloak] {
   display: none
 }
+
+img#playstore {
+  height: 100%;
+}
