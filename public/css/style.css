@@ -29,12 +29,9 @@ html, body {
     left: 0px;
     top: 56px;
   }
-
-  .side-nav {
-    min-width: 0px;
-  }
-
+  
   .side-nav.fixed {
+    min-width: 0px;
     transform: translateX(0%);
     position: absolute;
     top: 56px;
