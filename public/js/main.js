@@ -1,17 +1,4 @@
-$('.button-collapse').sideNav({
-    menuWidth: 300, // Default is 300
-    edge: 'left', // Choose the horizontal origin
-    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-  }
-);
-
 $('.modal').modal();
-
-const map = new google.maps.Map(document.getElementById("map"), {
-  center: { lat: -30.318325, lng: -64.551051 },
-  zoom: 6,
-  mapTypeId: 'terrain'
-});
 
 const config = {
   apiKey: "AIzaSyD7PRyMw8tX_YN1F5KIPAhMr7og0ha27YQ",
@@ -40,17 +27,32 @@ Sismos.on('value', function(snapshot) {
 });
 
 var marker = null;
-
 var lista_sismos = new Vue({
-  el: '#lista-sismos',
+  el: '#app',
   data: {
-    listaSismos: sismos
+    listaSismos: sismos,
+    showGoBackButton: false,
+    firstLoad: true,
+    infoWindow: null,
+    marker: new google.maps.Marker({
+    }),
+    map: new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -30.318325, lng: -64.551051 },
+      zoom: 6,
+      mapTypeId: 'terrain'
+    })
   },
   methods: { 
     marcarEnMapa: function(latitud, longitud, lugar, fecha, hora, profundidad, magnitud) {
-      if (marker != null)
-        marker.setMap(null);
-
+      if(!this.firstLoad) {
+        console.log("asdsadsa")
+        if(window.matchMedia("(max-width: 768px)").matches) {
+          $(".side-nav").css('transform', 'translate(-100%)');
+          this.showGoBackButton = true;
+        }
+      }
+      
+      this.firstLoad = false;
       let contentString = '<div> <p style="font-weight: bold;">' + lugar + '</p> ' + 
                                '<p>Fecha: '+ fecha +'</p>' +
                                '<p>Hora: ' + hora + '</p>' +
@@ -58,15 +60,22 @@ var lista_sismos = new Vue({
                                '<p>Magnitud: ' + magnitud + '</p>' +
                           '</div>'
 
-      let infowindow = new google.maps.InfoWindow({content: contentString});
+      this.marker.setMap(null);
+
+      this.infoWindow = new google.maps.InfoWindow({content: contentString});
       let latLong = new google.maps.LatLng(latitud, longitud);
-      marker = new google.maps.Marker({
+      this.marker = new google.maps.Marker({
         animation: google.maps.Animation.DROP,
         position: latLong,
-        map: map
+        map: this.map
       });
-      infowindow.open(map, marker);
-      map.setCenter(latLong);
+
+      this.infoWindow.open(this.map, this.marker);
+      this.map.setCenter(latLong);
+    },
+    goBack: function() {
+      this.showGoBackButton = false;
+      $(".side-nav").css('transform', 'translate(0%)');
     }
   }
 });
