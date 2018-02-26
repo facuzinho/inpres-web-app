@@ -1,3 +1,4 @@
+var firstLoad;
 $('.modal').modal();
 
 const config = {
@@ -19,12 +20,14 @@ Sismos.on('value', function(snapshot) {
   //Routeo de URL's para un sismo especifico
   let ruta = window.location.hash;
   for (i = 0; i < sismos.length; i++) { 
-    if (ruta.slice(2) == sismos[i].timestamp) {
+    if(ruta.slice(2) == sismos[i].timestamp) {
+      firstLoad = true;
       lista_sismos.marcarEnMapa(sismos[i].latitud, sismos[i].longitud, sismos[i].lugar, sismos[i].fecha, sismos[i].hora, sismos[i].profundidad,sismos[i].magnitud);
       break;
     }
   } 
 });
+
 
 var marker = null;
 var lista_sismos = new Vue({
@@ -32,7 +35,6 @@ var lista_sismos = new Vue({
   data: {
     listaSismos: sismos,
     showGoBackButton: false,
-    firstLoad: true,
     infoWindow: null,
     marker: new google.maps.Marker({
     }),
@@ -44,15 +46,14 @@ var lista_sismos = new Vue({
   },
   methods: { 
     marcarEnMapa: function(latitud, longitud, lugar, fecha, hora, profundidad, magnitud) {
-      if(!this.firstLoad) {
-        console.log("asdsadsa")
+      if(!firstLoad) {
         if(window.matchMedia("(max-width: 768px)").matches) {
           $(".side-nav").css('transform', 'translate(-100%)');
           this.showGoBackButton = true;
         }
       }
       
-      this.firstLoad = false;
+      firstLoad = false;
       let contentString = '<div> <p style="font-weight: bold;">' + lugar + '</p> ' + 
                                '<p>Fecha: '+ fecha +'</p>' +
                                '<p>Hora: ' + hora + '</p>' +
