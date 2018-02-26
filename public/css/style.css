@@ -16,17 +16,27 @@ html, body {
 }
 
 #map {
-  height: 100%;
-  margin-top: -64px
+  position: absolute;
+  overflow: hidden;
+  top: 64px;
+  bottom: 0px;
+  right: 0px;
+  left: 400px;
 }
 
-@media only screen and (max-width : 992px) {
-  header, main, footer {
-    padding-left: 0;
+@media only screen and (max-width : 768px) {
+  #map {
+    left: 0px;
+    top: 56px;
   }
 
   .side-nav.fixed {
-    top: 0px
+    transform: translateX(0%);
+    position: absolute;
+    top: 56px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
   }
 }
 
@@ -55,8 +65,9 @@ html, body {
 }
 
 nav .brand-logo{
-  font-size: 2rem; 
+  font-size: 1.8rem; 
   margin-left: 10px;
+  position: relative;
 }
 
 .right.hide-on-med-and-down{
@@ -73,7 +84,7 @@ nav .brand-logo{
 }
 
 #sidenav-overlay {
-  z-index: 2;
+  z-index: 999;
 }
 
 li.loading {
