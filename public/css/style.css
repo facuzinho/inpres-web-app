@@ -30,6 +30,10 @@ html, body {
     top: 56px;
   }
 
+  .side-nav {
+    min-width: 0px;
+  }
+
   .side-nav.fixed {
     transform: translateX(0%);
     position: absolute;
